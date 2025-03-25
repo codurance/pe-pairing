@@ -5,6 +5,9 @@ terraform {
       version = "~> 5.0"
     }
   }
+  backend "s3" {
+    # These key and value pairs are passed with -backend-config
+  }
 }
 
 # Configure the AWS Provider
