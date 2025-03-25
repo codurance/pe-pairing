@@ -38,7 +38,6 @@ jobs:
         # working-directory: ./
         id: init
         run: |
-          mv terraform.prod.tfvars terraform.tfvars
           terraform init -reconfigure \
             -backend-config="bucket=pe-pairing-tfstate" \
             -backend-config="key=pe-pairing-terraform.tfstate" \
