@@ -53,3 +53,8 @@ jobs:
         # working-directory: ./
         id: plan
         run: terraform plan -no-color -input=false -out tf.plan
+
+      - name: Terraform Apply
+        # working-directory: ${{ inputs.working-directory }}
+        id: apply
+        run: terraform apply tf.plan
