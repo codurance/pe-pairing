@@ -38,7 +38,7 @@ jobs:
             -backend-config="bucket=pe-pairing-tfstate" \
             -backend-config="key=${{ github.head_ref }}-pe-pairing-terraform.tfstate" \
             -backend-config="region=eu-west-2" \
-            -backend-config="dynamodb_table=${{ github.head_ref }}-pe-pairing-tfstate-lock"
+            -backend-config="dynamodb_table=pe-pairing-tfstate-lock"
 
       - name: Terraform Validate
         id: validate
