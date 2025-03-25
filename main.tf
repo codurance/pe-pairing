@@ -16,5 +16,5 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "this" {
-  bucket = "pe-pairing-bucket-name-1387321"
+  bucket = "pe-pairing-bucket-name-1387321-new"
 }
