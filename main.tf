@@ -16,5 +16,5 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "this" {
-  bucket = "the_bucket_name"
+  bucket = "the-bucket-name"
 }
