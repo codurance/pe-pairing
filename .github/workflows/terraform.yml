@@ -1,8 +1,6 @@
 name: 'Terraform'
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
 
 permissions:
@@ -30,31 +28,26 @@ jobs:
           terraform_version: 1.9.5
 
       - name: Terraform fmt
-        # working-directory: ./
         id: fmt
         run: terraform fmt -check
 
       - name: Terraform Init
-        # working-directory: ./
         id: init
         run: |
           terraform init -reconfigure \
             -backend-config="bucket=pe-pairing-tfstate" \
-            -backend-config="key=pe-pairing-terraform.tfstate" \
+            -backend-config="key=${{ github.head_ref }}-pe-pairing-terraform.tfstate" \
             -backend-config="region=eu-west-2" \
             -backend-config="dynamodb_table=pe-pairing-tfstate-lock"
 
       - name: Terraform Validate
-        # working-directory: ./
         id: validate
         run: terraform validate -no-color
 
       - name: Terraform Plan
-        # working-directory: ./
         id: plan
         run: terraform plan -no-color -input=false -out tf.plan
 
       - name: Terraform Apply
-        # working-directory: ${{ inputs.working-directory }}
         id: apply
         run: terraform apply tf.plan
