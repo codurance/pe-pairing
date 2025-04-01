@@ -14,3 +14,7 @@ terraform {
 provider "aws" {
   region = "eu-west-2"
 }
+
+resource "aws_s3_bucket" "test" {
+  bucket = "test-1743461707"
+}
