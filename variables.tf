@@ -25,7 +25,3 @@ variable "enable_dns_hostnames" {
   default     = true
 
 }
-
-
-
-
