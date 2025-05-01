@@ -38,7 +38,7 @@ resource "aws_route_table" "thiagomotta" {
   vpc_id = aws_vpc.thiagomotta.id
 
   route {
-    cidr_block           = "0.0.0.0/0"
+    cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.gw.id
   }
 }
@@ -70,12 +70,12 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 }
 
 resource "aws_instance" "thiagomotta" {
-  ami           = data.aws_ami.ubuntu.id
-  subnet_id     = aws_subnet.thiagomotta.id
-  instance_type   = "t3.micro"
-  security_groups = [aws_security_group.thiagomotta.id]
+  ami                         = data.aws_ami.ubuntu.id
+  subnet_id                   = aws_subnet.thiagomotta.id
+  instance_type               = "t3.micro"
+  security_groups             = [aws_security_group.thiagomotta.id]
   associate_public_ip_address = true
-  user_data       = file("${path.module}/nginx.sh") # check path
+  user_data                   = file("${path.module}/nginx.sh") # check path
 
   tags = local.tags
 }
