@@ -39,12 +39,12 @@ resource "aws_route_table_association" "public_assoc" {
 }
 
 resource "aws_instance" "foo" {
-  ami           = "ami-005e54dee72cc1d00" # us-west-2
-  instance_type = "t2.micro"
+  ami                         = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type               = "t2.micro"
   associate_public_ip_address = true
-  subnet_id     = aws_subnet.my_subnet.id
+  subnet_id                   = aws_subnet.my_subnet.id
 
-  user_data = << EOF
+  user_data = <<EOF
 
     #!/bin/bash
 
